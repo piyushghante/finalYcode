@@ -4,7 +4,7 @@ import pyodbc
 import base64
 from time import sleep
 from db_utils import save_file_details
-from Encryption import encrypt_file_ui
+from v3 import encrypt_file_ui
 from Decryption import decrypt_file_ui
 from navigation import make_sidebar
 
@@ -113,9 +113,9 @@ if 'logged_in' in st.session_state and st.session_state.logged_in:
 # Main Application Logic
 else:
     # Tabs for registration and login
-    tab1, tab2 = st.tabs(["Register", "Login"])
+    tab1, tab2 = st.tabs(["Login", "Register"])
 
-    with tab1:
+    with tab2:
         st.header("Register")
         with st.form("register_form"):
             st.write("Create a new account.")
@@ -133,7 +133,7 @@ else:
                 else:
                     st.error("Passwords do not match.")
 
-    with tab2:
+    with tab1:
         st.header("Login")
         with st.form("login_form"):
             st.write("Already have an account? Log in here.")
